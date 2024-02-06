@@ -21,9 +21,9 @@ public class ExampleServiceImpl implements ExampleService {
 
     @Override
     public Page<ExampleResponse> getAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         return exampleRepository.findAll(pageable)
-                .map((element) -> mapper.map(element, ExampleResponse.class));
+                .map(element -> mapper.map(element, ExampleResponse.class));
     }
 
     @Override
